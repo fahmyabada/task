@@ -98,7 +98,7 @@ class AddProductBottomSheetCustom extends GetView<RootController> {
                               : ButtonWidget(
                                   colorBtn: ColorResources.primary,
                                   text: Text(
-                                    'Save',
+                                    'Filter',
                                     style: TextStyle(
                                       color: ColorResources.white,
                                       fontSize: 15.sp,

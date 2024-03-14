@@ -22,7 +22,7 @@ class RootController extends GetxController {
   Future postData() async {
     try {
       final result = await _rootRepository.postData(priceFrom, priceTo);
-      data.addAll(result);
+      data.assignAll(result);
       Get.back();
     } catch (e) {
       Get.showSnackbar(Ui.errorSnackBar(message: e.toString()));
