@@ -39,8 +39,8 @@ class RootRemoteDataSource {
   Future<List<Products>> postDataGraph(String priceFrom, String priceTo) async {
     var variables = {
       "category_id": "18",
-      "price_from": "",
-      "price_to": "",
+      "price_from": priceFrom,
+      "price_to": priceTo,
       "rate_from": "",
       "rate_to": "",
       "spacefications": [],
