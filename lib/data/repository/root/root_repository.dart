@@ -1,5 +1,6 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:task2/data/models/data/data.dart';
+import 'package:task2/data/models/data_graph/products.dart';
 
 import 'root_remote_data_source.dart';
 
@@ -13,6 +14,14 @@ class RootRepository {
   Future<List<Data>> postData(String priceFrom, String priceTo) async {
     if (await InternetConnectionChecker().hasConnection) {
       return await _rootRemoteDataSource.postData(priceFrom, priceTo);
+    } else {
+      throw Exception('network not available');
+    }
+  }
+
+  Future<List<Products>> postDataGraph(String priceFrom, String priceTo) async {
+    if (await InternetConnectionChecker().hasConnection) {
+      return await _rootRemoteDataSource.postDataGraph(priceFrom, priceTo);
     } else {
       throw Exception('network not available');
     }

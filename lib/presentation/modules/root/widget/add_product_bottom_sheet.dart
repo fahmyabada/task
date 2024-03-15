@@ -105,8 +105,37 @@ class AddProductBottomSheetCustom extends GetView<RootController> {
                                     ),
                                   ),
                                   onPressed: () async {
-                                    await controller
-                                        .postData();
+                                    controller.data.clear();
+                                    controller.dataGraph.clear();
+                                    await controller.postData();
+                                  },
+                                  width: 1.sw,
+                                  paddingHorizontal: 10,
+                                  paddingVertical: 10,
+                                ),
+                        ),
+                        SizedBox(height: 20.h),
+                        Obx(
+                          () => Get.find<DioController>()
+                                  .isLoading(task: 'postDataGraph')
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: ColorResources.primary,
+                                  ),
+                                )
+                              : ButtonWidget(
+                                  colorBtn: ColorResources.primary,
+                                  text: Text(
+                                    'Filter GraphQl',
+                                    style: TextStyle(
+                                      color: ColorResources.white,
+                                      fontSize: 15.sp,
+                                    ),
+                                  ),
+                                  onPressed: () async {
+                                    controller.data.clear();
+                                    controller.dataGraph.clear();
+                                    await controller.postDataGraph();
                                   },
                                   width: 1.sw,
                                   paddingHorizontal: 10,

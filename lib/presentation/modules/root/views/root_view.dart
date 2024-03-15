@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task2/presentation/modules/root/widget/add_product_bottom_sheet.dart';
 import 'package:task2/presentation/modules/root/widget/root_empty_widget.dart';
+import 'package:task2/presentation/modules/root/widget/root_list_item_graph_widget.dart';
 import 'package:task2/presentation/modules/root/widget/root_list_item_widget.dart';
 import 'package:task2/presentation/utils/colors.dart';
 
@@ -30,7 +31,14 @@ class RootView extends GetView<RootController> {
                   itemCount: controller.data.length,
                   itemBuilder: (context, index) =>
                       rootListItemWidget(controller.data[index]))
-              : rootEmptyWidget()),
+              : controller.dataGraph.isNotEmpty
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: controller.dataGraph.length,
+                      itemBuilder: (context, index) =>
+                          rootListItemGraphWidget(controller.dataGraph[index]))
+                  : rootEmptyWidget()),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorResources.primary,
         onPressed: () {
